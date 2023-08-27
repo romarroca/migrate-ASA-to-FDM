@@ -19,4 +19,6 @@ Disclaimer
 
 Use this script at your own risk.
 
-Instructions to follow.
+Instructions
+- seperate your objects and object groups into a text file
+- run the script
