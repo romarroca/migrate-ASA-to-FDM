@@ -1,4 +1,4 @@
-#migrate-objects-ASA-to-FDM
+# migrate-objects-ASA-to-FDM
 
 A utility script to migrate existing objects and object groups from Cisco ASA to Cisco Firepower Device Manager (FDM).
 Background
