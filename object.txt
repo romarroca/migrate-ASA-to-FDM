@@ -1,0 +1,56 @@
+object network obj-10.1.1.10
+ host 10.1.1.10
+object network obj-10.1.1.20
+ host 10.1.1.20
+object network obj-10.2.0.0
+ subnet 10.2.0.0 255.255.255.0
+object network obj-10.2.1.0
+ subnet 10.2.1.0 255.255.255.0
+object network obj-10.3.2.0
+ subnet 10.3.2.0 255.255.255.128
+object network obj-fqdn-site1
+ fqdn www.site1.com
+object network obj-fqdn-site2
+ fqdn app.site2.org
+object network obj-rangeA
+ range 10.4.0.1 10.4.0.50
+object network obj-rangeB
+ range 10.5.0.1 10.5.0.25
+object network obj-rangeC
+ range 10.6.0.10 10.6.0.20
+object network obj-192.168.10.10
+ host 192.168.10.10
+object network obj-192.168.10.20
+ host 192.168.10.20
+object network obj-192.168.20.0
+ subnet 192.168.20.0 255.255.255.0
+object network obj-192.168.21.0
+ subnet 192.168.21.0 255.255.255.0
+object network obj-fqdn-example1
+ fqdn www.example1.com
+object network obj-fqdn-example2
+ fqdn www.example2.com
+object network obj-range1
+ range 192.168.50.1 192.168.50.10
+object network obj-range2
+ range 192.168.50.11 192.168.50.20
+object service TCP_8044
+ service tcp destination eq 8044 
+object service TCP_8080
+ service tcp destination eq 8080 
+object service TCP_8181
+ service tcp destination eq 8181 
+object service TCP_8282
+ service tcp destination eq 8282 
+object service TCP_8383
+ service tcp destination eq 8383 
+object service TCP_8484
+ service tcp destination eq 8484 
+object service TCP_8585
+ service tcp destination eq 8585 
+object service TCP_8686
+ service tcp destination eq 8686 
+object service TCP_8787
+ service tcp destination eq 8787 
+object service TCP_8888
+ service tcp destination eq 8888
