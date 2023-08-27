@@ -11,7 +11,7 @@ Use Case
 
 Disclaimer
 
-## This is more of a utility script developed for specific needs. The code may not be polished or production-ready. Hence, it is essential to:
+## This is more of a utility script developed for my specific needs. The code may not be polished or production-ready. Hence, it is essential to:
 
 - Not use this directly in a production environment.
 - Always take backups before performing any operations.
