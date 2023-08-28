@@ -9,7 +9,7 @@ object network obj-10.2.1.0
 object network obj-10.3.2.0
  subnet 10.3.2.0 255.255.255.128
 object network obj-fqdn-site1
- fqdn v4 www.site1.com
+ fqdn www.site1.com
 object network obj-fqdn-site2
  fqdn app.site2.org
 object network obj-rangeA
