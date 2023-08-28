@@ -21,6 +21,17 @@ Instructions
 - To now messed up your python use env
 - ![image](https://github.com/romarroca/migrate-ASA-to-FDM/assets/87074019/f8b210ec-b73f-4f5c-afa7-31a349e2c720)
 
-- parse-network_AND_service-object-only.py: supply the objects.txt and this script will parse and convert all the network and ports objects.
+- supply the objects.txt or whatever the filename of the txt file containing objects that you want to process and this script will parse and convert all the network and ports objects.
 - ![image](https://github.com/romarroca/migrate-ASA-to-FDM/assets/87074019/19014460-825a-46c6-9537-2e16b27d9d01)
+- You can review the output files first.
+
+- to upload it to FDM, makesure to change the following to your setup
+- ![image](https://github.com/romarroca/migrate-ASA-to-FDM/assets/87074019/d29b5e85-72b1-486f-ba41-b2706d062cd1)
+- In importing, you need to import in following sequence
+    1. import 1st output_objects_network.json and deploy manually or using deploy.py
+    2. import 2nd output_ports.json and deploy manually or using deploy.py
+    3. import 3rd output_group_ports.json and deploy manually or using deploy.py
+    4. import 4th output_objects_network_groups.json and deploy manually or using deploy.py
+
+
 
