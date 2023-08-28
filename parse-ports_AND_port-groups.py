@@ -10,11 +10,13 @@ COMMON_PORTS = {
     "SIP": "5060"
 }
 
-def get_port_name(protocol, port):
-    for name, value in COMMON_PORTS.items():
-        if port == value:
-            return f"{protocol.upper()}_{value}"
-    return f"{protocol.upper()}_{port}"
+def get_port_name_and_value(protocol, port):
+    port = port.strip().upper()  # Remove any leading or trailing spaces and make uppercase
+    port_value = COMMON_PORTS.get(port, port)
+    port_name = f"{protocol.upper()}_{port_value}"
+    return port_name, port_value
+
+
 
 def parse_asa_config(filename):
     parsed_data = []
@@ -38,13 +40,14 @@ def parse_asa_config(filename):
             if match and protocol_type:
                 if "eq" in match.group(1):
                     port = match.group(2)
-                    name = get_port_name(protocol_type, port)
+                    name, port_value = get_port_name_and_value(protocol_type, port)
                     parsed_data.append({
                         "name": name,
                         "description": name,
                         "type": f"{protocol_type}portobject",
-                        "port": port
+                        "port": port_value
                     })
+
                 else:
                     start_port, end_port = match.group(3), match.group(4)
                     name = f"PORT-RANGE_{start_port}-{end_port}"
@@ -97,7 +100,7 @@ def parse_asa_config_group(filename, objects_filename):
                         "type": port_obj["type"]
                     })
                 else:
-                    port_name = get_port_name(protocol_type, port)
+                    port_name, _ = get_port_name_and_value(protocol_type, port)
                     group["objects"].append({
                         "name": port_name,
                         "type": f"{protocol_type}portobject"
