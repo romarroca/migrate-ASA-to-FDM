@@ -20,8 +20,11 @@ current_object = None
 for line in lines:
     line = line.strip()
 
+    split_line = line.split()
+    length = len(split_line)
+
     if line.startswith("object network"):
-        name = format_name(line.split()[2])
+        name = format_name(split_line[2])
         if current_object:
             asa_objects.append(current_object)
         current_object = {
@@ -30,41 +33,43 @@ for line in lines:
             "description": name  # default description
         }
     elif line.startswith("object service"):
-        name = format_name(line.split()[2])
+        name = format_name(split_line[2])
         if current_object:
             asa_objects.append(current_object)
         current_object = {
             "name": name,
             "description": name  # default description
         }
-    elif line.startswith("service tcp"):
-        _, _, _, _, port = line.split()
+    elif line.startswith("service tcp") and length == 5:
+        _, _, _, _, port = split_line
         current_object["type"] = "tcpportobject"
         current_object["port"] = port
-    elif line.startswith("service udp"):
-        _, _, _, _, port = line.split()
+    elif line.startswith("service udp") and length == 5:
+        _, _, _, _, port = split_line
         current_object["type"] = "udpportobject"
         current_object["port"] = port
-    elif line.startswith("subnet"):
-        _, subnet_ip, subnet_mask = line.split()
+    elif line.startswith("subnet") and length == 3:
+        _, subnet_ip, subnet_mask = split_line
         subnet_prefix = ipaddress.IPv4Network(f"{subnet_ip}/{subnet_mask}", strict=False).prefixlen
         current_object["subType"] = "NETWORK"
         current_object["value"] = f"{subnet_ip}/{subnet_prefix}"
-    elif line.startswith("host"):
-        _, host_ip = line.split()
+    elif line.startswith("host") and length == 2:
+        _, host_ip = split_line
         current_object["subType"] = "HOST"
         current_object["value"] = host_ip
-    elif line.startswith("fqdn"):
-        _, _, fqdn_value = line.split()
+    elif line.startswith("fqdn") and length == 3:
+        _, _, fqdn_value = split_line
         current_object["subType"] = "FQDN"
         current_object["value"] = fqdn_value
-    elif line.startswith("range"):
-        _, start_ip, end_ip = line.split()
+    elif line.startswith("range") and length == 3:
+        _, start_ip, end_ip = split_line
         current_object["subType"] = "RANGE"
         current_object["value"] = f"{start_ip}-{end_ip}"
     elif line.startswith("description"):
         description = line[len("description "):]
         current_object["description"] = description if description else current_object["name"]
+    else:
+        print(f"Unexpected format in line: {line}")
 
 # Add the last object
 if current_object:
