@@ -17,3 +17,10 @@ Use this script at your own risk.
 
 Instructions
 - I should probably create a video on how I used it
+
+- To now messed up your python use env
+- ![image](https://github.com/romarroca/migrate-ASA-to-FDM/assets/87074019/f8b210ec-b73f-4f5c-afa7-31a349e2c720)
+
+- parse-network_AND_service-object-only.py: supply the objects.txt and this script will parse and convert all the network and ports objects.
+- ![image](https://github.com/romarroca/migrate-ASA-to-FDM/assets/87074019/19014460-825a-46c6-9537-2e16b27d9d01)
+
