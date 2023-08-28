@@ -20,5 +20,4 @@ Disclaimer
 Use this script at your own risk.
 
 Instructions
-- seperate your objects and object groups into a text file
-- run the script
+- I should probably create a video on how I used it
